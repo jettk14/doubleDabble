@@ -118,7 +118,7 @@ ret
 TIMER1_SETUP:             ;determine interrupt frequency
   clr util                ;Prep utility reg for Normal Mode
   sts TCCR1A, util        ;set Normal Mode in T1 Control Reg A
-  ldi util, T1ps256       ; T1:2^24/2^3/2^16 (prescale)> 2^5 ovf/s> 16Hz
+  ldi util, T1ps256       ; T1:2^24/2^8/2^16 (prescale)> 1 ovf/s> 0.5Hz
   sts TCCR1B, util        ;Timer1 clock = system clock / prescale
   ldi util,1<<TOIE1       ;enable Timer/Counter1 Overflow Interrupt
   sts TIMSK1,util         ;enable Timer1 Overflow interrupts
